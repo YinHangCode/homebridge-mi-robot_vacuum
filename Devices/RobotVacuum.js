@@ -78,7 +78,7 @@ RobotVacuumFanAccessory.prototype.getServices = function() {
                             if(result === 0) {
                                 callback(null);
                             } else {
-                                callback("result: " + result);
+                                callback(new Error(result));
                             }
                         }).catch(function(err) {
                             that.platform.log.error("[MiRobotVacuumPlatform][ERROR]RobotVacuumFanAccessory - On - setOn Error: " + err);
@@ -146,7 +146,7 @@ RobotVacuumFanAccessory.prototype.getServices = function() {
                         if(result === 0) {
                             callback(null);
                         } else {
-                            callback("result: " + result);
+                            callback(new Error(result));
                         }
                     }).catch(function(err) {
                         that.platform.log.error("[MiRobotVacuumPlatform][ERROR]RobotVacuumFanAccessory - RotationSpeed - setRotationSpeed Error: " + err);
