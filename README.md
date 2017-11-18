@@ -11,8 +11,8 @@ Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](http
 ![](https://raw.githubusercontent.com/YinHangCode/homebridge-mi-robot_vacuum/master/images/robot_vacuum2.jpg)
 
 ## Supported Devices
-1.RobotVacuum(小米扫地机器人)   
-2.RobotVacuum2(石头扫地机器人) --- coming soon   
+1.MiRobotVacuum(小米扫地机器人)   
+2.MiRobotVacuum2(石头扫地机器人) --- coming soon   
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
