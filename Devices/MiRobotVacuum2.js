@@ -70,7 +70,7 @@ MiRobotVacuum2FanAccessory.prototype.getServices = function() {
         .on('get', function(callback) {
             that.device.call("get_status", [], {retries: 3}).then(result => {
                 that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuum2FanAccessory - On - getOn: " + JSON.stringify(result[0]));
-                callback(null, result[0]['state'] === 10 ? false : true);
+                callback(null, result[0]['state'] === 5 ? true : false);
             }).catch(function(err) {
                 that.platform.log.error("[MiRobotVacuumPlatform][ERROR]MiRobotVacuum2FanAccessory - On - getOn Error: " + err);
                 callback(err);
