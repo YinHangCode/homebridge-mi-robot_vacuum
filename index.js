@@ -1,4 +1,4 @@
-require('./Devices/RobotVacuum');
+require('./Devices/MiRobotVacuum');
 
 var fs = require('fs');
 var packageFile = require("./package.json");
@@ -81,8 +81,8 @@ MiRobotVacuumPlatform.prototype = {
                     continue;
                 }
                 
-//              if (deviceCfg['type'] == "ZhiMiFan") {
-                    new RobotVacuum(this, deviceCfg).forEach(function(accessory, index, arr){
+//              if (deviceCfg['type'] == "MiRobotVacuum") {
+                    new MiRobotVacuum(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
                     });
 //              } else {

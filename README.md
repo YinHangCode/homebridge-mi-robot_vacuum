@@ -30,6 +30,13 @@ npm install -g miio homebridge-mi-robot_vacuum
 }]
 ```
 ## Get token
+### Get token by miio2.db
+setup MiJia(MiHome) app in your android device or android virtual machine.   
+open MiJia(MiHome) app and login your account.   
+refresh device list and make sure device display in the device list.   
+get miio2.db(path: /data/data/com.xiaomi.smarthome/databases/miio2.db) file from your android device or android virtual machine.   
+open website [[Get MiIo Tokens By DataBase File](http://miio2.yinhh.com/)], upload miio2.db file and submit.    
+### Get token by network
 Open command prompt or terminal. Run following command:   
 ```
 miio --discover
@@ -51,7 +58,9 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs
-### 0.0.2
+### 0.0.3 (2017-11-18)
+1.modify class name, reduce the probability of conflicts due to the same class name and other plugins.   
+### 0.0.2 (2017-09-11)
 1.optimized code.   
-### 0.0.1
+### 0.0.1 (2017-09-10)
 1.support for XiaoMi robot vacuum.   
