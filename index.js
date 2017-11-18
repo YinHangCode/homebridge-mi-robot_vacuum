@@ -1,4 +1,5 @@
 require('./Devices/MiRobotVacuum');
+require('./Devices/MiRobotVacuum2');
 
 var fs = require('fs');
 var packageFile = require("./package.json");
@@ -74,19 +75,23 @@ MiRobotVacuumPlatform.prototype = {
         if(deviceCfgs instanceof Array) {
             for (var i = 0; i < deviceCfgs.length; i++) {
                 var deviceCfg = deviceCfgs[i];
-//              if(null == deviceCfg['type'] || "" == deviceCfg['type']) {
-//                  continue;
-//              }
+                if(null == deviceCfg['type'] || "" == deviceCfg['type']) {
+                    continue;
+                }
                 if(null == deviceCfg['token'] || "" == deviceCfg['token'] || null == deviceCfg['ip'] || "" == deviceCfg['ip']) {
                     continue;
                 }
                 
-//              if (deviceCfg['type'] == "MiRobotVacuum") {
+                if (deviceCfg['type'] == "MiRobotVacuum") {
                     new MiRobotVacuum(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
                     });
-//              } else {
-//              }
+                } else if (deviceCfg['type'] == "MiRobotVacuum2") {
+                    new MiRobotVacuum2(this, deviceCfg).forEach(function(accessory, index, arr){
+                        myAccessories.push(accessory);
+                    });
+                } else {
+                }
             }
             this.log.info("[MiRobotVacuumPlatform][INFO]device size: " + deviceCfgs.length + ", accessories size: " + myAccessories.length);
         }

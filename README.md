@@ -11,8 +11,8 @@ Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](http
 ![](https://raw.githubusercontent.com/YinHangCode/homebridge-mi-robot_vacuum/master/images/robot_vacuum2.jpg)
 
 ## Supported Devices
-1.MiRobotVacuum(–°√◊…®µÿª˙∆˜»À)   
-2.MiRobotVacuum2( ØÕ∑…®µÿª˙∆˜»À) --- coming soon   
+1.MiRobotVacuum(Â∞èÁ±≥Êâ´Âú∞Êú∫Âô®‰∫∫)   
+2.MiRobotVacuum2(Áü≥Á±≥Êâ´Âú∞Êú∫Âô®‰∫∫)   
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
@@ -27,9 +27,16 @@ npm install -g miio homebridge-mi-robot_vacuum
 "platforms": [{
     "platform": "MiRobotVacuumPlatform",
     "deviceCfgs": [{
+        "type": "MiRobotVacuum",
         "ip": "192.168.88.xx",
         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         "robotVacuumName": "robot vacuum",
+        "robotVacuumDisable": false
+    }, {
+        "type": "MiRobotVacuum2",
+        "ip": "192.168.88.xx",
+        "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "robotVacuumName": "robot vacuum 2",
         "robotVacuumDisable": false
     }]
 }]
@@ -63,6 +70,8 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs
+### 0.1.0 (2017-11-18)
+1.support for XiaoMi robot vacuum 2.   
 ### 0.0.3 (2017-11-18)
 1.modify class name, reduce the probability of conflicts due to the same class name and other plugins.   
 ### 0.0.2 (2017-09-11)
