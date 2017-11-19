@@ -19,12 +19,6 @@ MiRobotVacuum2 = function(platform, config) {
         token: this.config['token']
     });
     
-    this.ip = this.config['ip'];
-    this.token = this.config['token'];                      
-    
-    this.serial = this.token.substring(this.token.length - 16);
-    
-    this.platform.log.debug("ip: " + this.device.address);this.platform.log.debug("token: " + this.device.packet.token);
     this.accessories = {};
     if(!this.config['robotVacuumDisable'] && this.config['robotVacuumName'] && this.config['robotVacuumName'] != "") {
         this.accessories['fanAccessory'] = new MiRobotVacuum2FanAccessory(this);
@@ -40,13 +34,8 @@ inherits(MiRobotVacuum2, Base);
 MiRobotVacuum2FanAccessory = function(dThis) {
     this.device = dThis.device;
     this.name = dThis.config['robotVacuumName'];
+    this.enablePauseToCharge = (null != dThis.config['enablePauseToCharge']) ? dThis.config['enablePauseToCharge'] : true;
     this.platform = dThis.platform;
-    this.enablePauseToCharge = dThis.config['enablePauseToCharge'];
-    
-    this.ip = dThis.ip;
-    this.token = dThis.token;
-    this.serial = this.token.substring(this.token.length - 16);
-
 }
 
 MiRobotVacuum2FanAccessory.prototype.getServices = function() {
@@ -57,7 +46,7 @@ MiRobotVacuum2FanAccessory.prototype.getServices = function() {
     infoService
         .setCharacteristic(Characteristic.Manufacturer, "XiaoMi")
         .setCharacteristic(Characteristic.Model, "Robot Vacuum 2")
-        .setCharacteristic(Characteristic.SerialNumber, this.serial);
+        .setCharacteristic(Characteristic.SerialNumber, "Undefined");
     services.push(infoService);
 
     var fanService = new Service.Fan(this.name);
@@ -80,20 +69,24 @@ MiRobotVacuum2FanAccessory.prototype.getServices = function() {
             that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuum2FanAccessory - On - setOn: " + value);
             that.device.call(value ? "app_start" : "app_pause", []).then(result => {
                 that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuum2FanAccessory - On - setOn Result: " + result);
-                if(!value && this.enablePauseToCharge){
-                    that.device.call("app_charge", []).then(result => {
-                        that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuum2FanAccessory - On - setOn Result: " + result);
-                        if(result[0] === "ok") {
-                            callback(null);
-                        } else {
-                            callback(new Error(result));
-                        }
-                    }).catch(function(err) {
-                        that.platform.log.error("[MiRobotVacuumPlatform][ERROR]MiRobotVacuum2FanAccessory - On - setOn Error: " + err);
-                        callback(err);
-                    });
+                if(result === "ok") {
+                    if(!value && that.enablePauseToCharge){
+                        that.device.call("app_charge", []).then(result => {
+                            that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuum2FanAccessory - On - setOn Result: " + result);
+                            if(result[0] === "ok") {
+                                callback(null);
+                            } else {
+                                callback(new Error(result));
+                            }
+                        }).catch(function(err) {
+                            that.platform.log.error("[MiRobotVacuumPlatform][ERROR]MiRobotVacuum2FanAccessory - On - setOn Error: " + err);
+                            callback(err);
+                        });
+                    } else {
+                        callback(null);
+                    }
                 } else {
-                    callback(null);
+                    callback("result: " + result);
                 }
             }).catch(function(err) {
                 that.platform.log.error("[MiRobotVacuumPlatform][ERROR]MiRobotVacuum2FanAccessory - On - setOn Error: " + err);
@@ -115,8 +108,8 @@ MiRobotVacuum2FanAccessory.prototype.getServices = function() {
             if(value <= 0) {
                 callback(null);
             } else {
-                var nowLevel = rotationSpeedCharacteristic.value
-                var valueLevel = value;
+                var nowLevel = that.getLevelBySpeed(rotationSpeedCharacteristic.value);
+                var valueLevel = that.getLevelBySpeed(value);
                 that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuum2FanAccessory - RotationSpeed - setRotationSpeed: " + value + ", valueLevel: " + valueLevel + ", nowValue: " + rotationSpeedCharacteristic.value + ", nowLevel: " + nowLevel);
                 if(nowLevel == valueLevel) {
                     callback(null);
@@ -166,4 +159,8 @@ MiRobotVacuum2FanAccessory.prototype.getServices = function() {
     services.push(batteryService);
 
     return services;
+}
+
+MiRobotVacuum2FanAccessory.prototype.getLevelBySpeed = function(speed) {
+    return speed;
 }

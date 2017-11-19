@@ -7,14 +7,14 @@ Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](http
    
 **Note: If you find bugs, please submit them to [issues](https://github.com/YinHangCode/homebridge-mi-robot_vacuum/issues) or [QQ Group: 107927710](//shang.qq.com/wpa/qunwpa?idkey=8b9566598f40dd68412065ada24184ef72c6bddaa11525ca26c4e1536a8f2a3d).**   
 
+**Note: Maybe you should open the Vacuum Page in Mijia(MiHome) APP before you start HomeBridge or you will only get Timeout.**   
+
 ![](https://raw.githubusercontent.com/YinHangCode/homebridge-mi-robot_vacuum/master/images/robot_vacuum.jpg)
 ![](https://raw.githubusercontent.com/YinHangCode/homebridge-mi-robot_vacuum/master/images/robot_vacuum2.jpg)
 
 ## Supported Devices
 1.MiRobotVacuum(小米扫地机器人)   
 2.MiRobotVacuum2(石米扫地机器人)   
-
-## You should open the Vacuum Page in Mijia APP before you start HomeBridge or you will only get Timeout.
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
@@ -74,7 +74,7 @@ Wait until you get output.
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs
 ### 0.1.1 (2017-11-19)
-1.Rewrite support for XiaoMi robot vacuum 2.  
+1.fixed bug that XiaoMi robot vacuum 2 can't work.   
 ### 0.1.0 (2017-11-18)
 1.support for XiaoMi robot vacuum 2.   
 ### 0.0.3 (2017-11-18)
