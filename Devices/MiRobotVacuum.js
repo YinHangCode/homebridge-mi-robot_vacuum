@@ -86,7 +86,7 @@ MiRobotVacuumFanAccessory.prototype.getServices = function() {
                         callback(null);
                     }
                 } else {
-                    callback("result: " + result);
+                    callback(new Error(result));
                 }
             }).catch(function(err) {
                 that.platform.log.error("[MiRobotVacuumPlatform][ERROR]MiRobotVacuumFanAccessory - On - setOn Error: " + err);
