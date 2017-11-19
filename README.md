@@ -14,6 +14,8 @@ Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](http
 1.MiRobotVacuum(小米扫地机器人)   
 2.MiRobotVacuum2(石米扫地机器人)   
 
+## You should open the Vacuum Page in Mijia APP before you start HomeBridge or you will only get Timeout.
+
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
 If you are using Raspberry Pi, please read [Running-HomeBridge-on-a-Raspberry-Pi](https://github.com/nfarina/homebridge/wiki/Running-HomeBridge-on-a-Raspberry-Pi).   
@@ -37,6 +39,7 @@ npm install -g miio homebridge-mi-robot_vacuum
         "ip": "192.168.88.xx",
         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         "robotVacuumName": "robot vacuum 2",
+        "enablePauseToCharge" : true,
         "robotVacuumDisable": false
     }]
 }]
@@ -70,6 +73,8 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs
+### 0.1.1 (2017-11-19)
+1.Rewrite support for XiaoMi robot vacuum 2.  
 ### 0.1.0 (2017-11-18)
 1.support for XiaoMi robot vacuum 2.   
 ### 0.0.3 (2017-11-18)
