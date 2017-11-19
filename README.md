@@ -33,13 +33,14 @@ npm install -g miio homebridge-mi-robot_vacuum
         "ip": "192.168.88.xx",
         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         "robotVacuumName": "robot vacuum",
+        "enablePauseToCharge": true,
         "robotVacuumDisable": false
     }, {
         "type": "MiRobotVacuum2",
         "ip": "192.168.88.xx",
         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         "robotVacuumName": "robot vacuum 2",
-        "enablePauseToCharge" : true,
+        "enablePauseToCharge": true,
         "robotVacuumDisable": false
     }]
 }]
