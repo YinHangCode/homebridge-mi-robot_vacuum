@@ -1,12 +1,17 @@
 {
   "name": "homebridge-mi-robot_vacuum",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "XiaoMi robot vacuum plugins for HomeBridge(https://github.com/nfarina/homebridge).",
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin",
+    "xiaomi",
+    "mi",
+    "robot_vacuum",
+    "robot",
+    "vacuum"
   ],
   "author": "YinHang",
-  "license": "ISC",
+  "homepage": "https://github.com/YinHangCode/homebridge-mi-robot_vacuum",
   "repository": {
     "type": "git",
     "url": "https://github.com/YinHangCode/homebridge-mi-robot_vacuum"
@@ -15,7 +20,10 @@
     "url": "https://github.com/YinHangCode/homebridge-mi-robot_vacuum/issues"
   },
   "engines": {
-    "node": ">=0.12.0",
+    "node": ">=7.0.0",
     "homebridge": ">=0.4.1"
+  },
+  "dependencies": {
+    "miio": "0.14.1"
   }
 }

@@ -22,7 +22,7 @@ If you are using Raspberry Pi, please read [Running-HomeBridge-on-a-Raspberry-Pi
 2. Make sure you can see HomeBridge in your iOS devices, if not, please go back to step 1.   
 3. Install packages.   
 ```
-npm install -g miio homebridge-mi-robot_vacuum
+npm install -g homebridge-mi-robot_vacuum
 ```
 ## Configuration
 ```
@@ -74,6 +74,8 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs
+### 0.1.2 (2018-02-10)
+1.update 'package.json'.   
 ### 0.1.1 (2017-11-19)
 1.fixed bug that XiaoMi robot vacuum 2 can't work.   
 ### 0.1.0 (2017-11-18)
