@@ -69,11 +69,11 @@ MiRobotVacuumFanAccessory.prototype.getServices = function() {
             that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuumFanAccessory - On - setOn: " + value);
             that.device.call(value ? "app_start" : "app_pause", []).then(result => {
                 that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuumFanAccessory - On - setOn Result: " + result);
-                if(result === 0) {
+                if(result === 0 || result[0] == "ok") {
                     if(!value && that.enablePauseToCharge){
                         that.device.call("app_charge", []).then(result => {
                             that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuumFanAccessory - On - setOn Result: " + result);
-                            if(result === 0) {
+                            if(result === 0 || result[0] == "ok") {
                                 callback(null);
                             } else {
                                 callback(new Error(result));
@@ -116,7 +116,7 @@ MiRobotVacuumFanAccessory.prototype.getServices = function() {
                 } else {
                     that.device.call("set_custom_mode", [valueLevel]).then(result => {
                         that.platform.log.debug("[MiRobotVacuumPlatform][DEBUG]MiRobotVacuumFanAccessory - RotationSpeed - setRotationSpeed Result: " + result);
-                        if(result === 0) {
+                        if(result === 0 || result[0] == "ok") {
                             callback(null);
                         } else {
                             callback(new Error(result));

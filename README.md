@@ -74,6 +74,8 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs
+### 0.1.3 (2018-04-18)
+1.adaptation firmware version: 3.3.9_003194.   
 ### 0.1.2 (2018-02-10)
 1.update 'package.json'.   
 ### 0.1.1 (2017-11-19)
